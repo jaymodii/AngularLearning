@@ -1,4 +1,13 @@
 <router-outlet>
-  <button (click)="increment()">Increment</button>
-  <app-hooks [count]="count"></app-hooks>
+  <div style="display: flex; column-gap: 50px;">
+
+    <button (click)="increment()">Increment</button>
+    <button (click)="toggleHooksComponent()"
+      [ngStyle]="{'background-color': showHooksComponent ? 'red' : 'green', 'color': 'white'}">
+      {{ showHooksComponent ? 'Hide Hooks Component' : 'Show Hooks Component' }}
+    </button>
+
+  </div>
+  <app-hooks *ngIf="showHooksComponent" [count]="count"></app-hooks>
+
 </router-outlet>

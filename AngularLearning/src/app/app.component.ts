@@ -7,10 +7,17 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'AngularLearning';
-  count:number = 0;
+  count: number = 0;
+  showHooksComponent: boolean = true;
 
-  increment():void {
+  increment(): void {
     this.count++;
   }
+
+  toggleHooksComponent() {
+    this.showHooksComponent = !this.showHooksComponent;
+    this.count = 0;
+  }
+
 }
 

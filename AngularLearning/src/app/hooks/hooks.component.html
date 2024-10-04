@@ -1,6 +1,6 @@
-<p>Child Component - Count: {{count}}</p>
+<p>Child Component - Count: <b>{{count}}</b></p>
 
-<p>{{messageString}}</p>
+<p>{{messageString}} </p>
 
 <p>{{messageString2}}</p>
 
@@ -8,4 +8,36 @@
 
 <p>{{messageString4}}</p>
 
+<p>This is data : - <b>{{data}}</b></p>
 
+<p>Total Changes Cycle : <b>{{changeCounter}}</b></p>
+
+<button (click)="pauseResumeCounter()"
+  [ngStyle]="{'background-color': startCounter ? 'red' : 'green', 'color': 'white'}">
+  {{ startCounter ? 'Stop Change Detection' : 'Resume Change Detection' }}
+</button>
+
+<div #viewChildElement style="width: 200px; height: 50px; background-color: lightgray; margin-top: 10px;">
+  This element's background color will change after view initialization
+</div>
+
+<div #viewChildElement2 style="width: 200px; height: 50px; background-color: lightgray; margin-top: 10px;">
+  This element's background color will change after each change detection cycle
+</div>
+
+<br>
+
+<button (click)="toggleHooksChildComponent()"
+  [ngStyle]="{'background-color': showHooksChildComponent ? 'red' : 'green', 'color': 'white'}">
+  {{ showHooksChildComponent ? 'Hide Hooks Component' : 'Show Hooks Component' }}
+</button>
+
+<p>---------------------------------------</p>
+
+<app-hook-child *ngIf="showHooksChildComponent" [childCounter]="childCounter">
+  <h2 header>Title from Hook Parent
+  </h2>
+
+  <p>This is the body content from the Parent Hook component.</p>
+  <p>Child counter passed by parent in body : <b>{{childCounter}}</b></p>
+</app-hook-child>
